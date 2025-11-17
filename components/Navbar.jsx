@@ -1,158 +1,33 @@
 "use client";
 
-import Image from "next/image";
-
 export default function Navbar() {
   return (
-    <nav className="bg-neutral-primary fixed w-full z-20 top-0 start-0 border-b border-default">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a
-          href="https://flowbite.com/"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-         <Image
-         src="/logo.png"
-            className="h-7"
-            width={32}
-              height={32}
-            alt="Flowbite Logo"
-         />
-          <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
-            FocusMe
-          </span>
-        </a>
-
-        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            type="button"
-            className="flex text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="user-dropdown"
-            data-dropdown-placement="bottom"
-          >
-            <Image
-              className="w-8 h-8 rounded-full"
-              src="/logo.png"
-              alt="user photo"
-              width={32}
-              height={32}
-            />
-          </button>
-
-          <div
-            className="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
-            id="user-dropdown"
-          >
-            <div className="px-4 py-3 text-sm border-b border-default">
-              <span className="block text-heading font-medium">Joseph McFall</span>
-              <span className="block text-body truncate">name@flowbite.com</span>
-            </div>
-            <ul
-              className="p-2 text-sm text-body font-medium"
-              aria-labelledby="user-menu-button"
-            >
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                >
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                >
-                  Settings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                >
-                  Earnings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded"
-                >
-                  Sign out
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <button
-            data-collapse-toggle="navbar-user"
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
-            aria-controls="navbar-user"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-6 h-6"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth="2"
-                d="M5 7h14M5 12h14M5 17h14"
-              />
-            </svg>
-          </button>
+    <nav class="absolute top-0 left-0 w-full bg-gray-200 shadow shadow-gray-300 px-8 md:px-auto z-50">
+      <div class="md:h-16 h-28 mx-auto md:px-4 container flex items-center justify-between flex-wrap md:flex-nowrap">
+        <div class="text-indigo-500 md:order-1 flex items-center space-x-2"> 
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+          </svg>
+          <span class="text-xl font-bold">FocusMe</span> 
         </div>
-
-        <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-user"
-        >
-          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-                aria-current="page"
-              >
-                Timer
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                Progresso
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                Ranking
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0"
-              >
-                Tasks
-              </a>
-            </li>
+        <div class="text-gray-500 order-3 w-full md:w-auto md:order-2">
+          <ul class="flex font-semibold justify-between">
+            <li class="md:px-4 md:py-2 text-indigo-500"><a href="#">Timer</a></li>
+            <li class="md:px-4 md:py-2 hover:text-indigo-400"><a href="#">Progresso</a></li>
+            <li class="md:px-4 md:py-2 hover:text-indigo-400"><a href="#">Ranking</a></li>
+            <li class="md:px-4 md:py-2 hover:text-indigo-400"><a href="#">Tasks</a></li>
+            <li class="md:px-4 md:py-2 hover:text-indigo-400"><a href="#">Configurações</a></li>
           </ul>
+        </div>
+        <div class="order-2 md:order-3">
+          <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-gray-50 rounded-xl flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span>Login</span>
+          </button>
         </div>
       </div>
     </nav>
