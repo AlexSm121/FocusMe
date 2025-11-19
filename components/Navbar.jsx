@@ -7,8 +7,8 @@ export default function Navbar() {
 
   const links = [
     { label: "Timer", href: "./" },
-    { label: "Progresso", href: "#" },
-    { label: "Ranking", href: "#" },
+    { label: "Progresso", href: "/progresso" },
+    { label: "Ranking", href: "/ranking" },
     { label: "Tasks", href: "/task" },
     { label: "Configurações", href: "#" },
   ];
