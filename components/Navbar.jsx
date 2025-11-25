@@ -12,7 +12,7 @@ export default function Navbar() {
     { label: "Progresso", href: "/progresso" },
     { label: "Ranking", href: "/ranking" },
     { label: "Tasks", href: "/task" },
-    { label: "Configurações", href: "#" },
+    { label: "Configurações", href: "/Telaconfig" },
   ];
 
   return (
