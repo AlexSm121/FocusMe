@@ -1,70 +1,84 @@
- "use client";
+"use client";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "@/components/Navbar";
 
 export default function Telaconfig() {
   return (
-    <div className="bg-[#7c3aed] min-h-screen pt-10 px-6 flex justify-center items-center">
-      <div className="bg-white w-[90%] rounded-3xl shadow-xl p-10 relative">
+    <>
+      <Navbar />
 
-        {/* Botão voltar */}
-        <button className="absolute left-6 top-6">
-          <svg
-            width="28"
-            height="28"
-            fill="none"
-            stroke="#7c3aed"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M15 18L9 12L15 6" />
-          </svg>
-        </button>
+      <div className="bg-[#7c3aed] min-h-screen pt-20 px-6 flex justify-center items-start">
+        {/* DIV BRANCA PRINCIPAL */}
+        <div className="bg-white w-[95%] max-w-4xl rounded-3xl shadow-xl p-14 relative mx-auto">
 
-        {/* Avatar */}
-        <div className="flex flex-col items-center -mt-20 mb-10">
-          <Image
-            src="/fox.png"
-            alt="avatar"
-            className="w-28 h-28 rounded-full ring-8 ring-[#7c3aed]"
-          />
+          {/* Botão voltar */}
+          <button className="absolute left-8 top-8">
+            <svg
+              width="30"
+              height="30"
+              fill="none"
+              stroke="#7c3aed"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M18 22L10 14L18 6" />
+            </svg>
+          </button>
 
-          <Button className="mt-4 bg-[#7c3aed] px-6 py-2 rounded-full shadow text-white">
-            Alterar
-          </Button>
-        </div>
+          {/* Avatar + botão */}
+          <div className="flex flex-col items-center -mt-12 mb-12">
+            <Image
+              src="/images/lele.png"
+              alt="avatar"
+              className="w-32 h-32 rounded-full ring-8 ring-[#7c3aed]"
+              width={120}
+              height={120}
+            />
 
-        {/* Alterar Nome */}
-        <div className="bg-gray-300 rounded-full px-6 py-6 flex items-center justify-between mb-6">
-          <div>
-            <Label className="font-semibold text-gray-800">
-              Alterar nome de usuário
-            </Label>
-            <p className="text-sm text-gray-700 mt-1">Bruno</p>
+            <Button className="mt-6 bg-[#7c3aed] px-8 py-2 rounded-full shadow text-white">
+              Alterar
+            </Button>
           </div>
 
-          <Button className="bg-[#7c3aed] text-white px-6 py-2 rounded-full shadow">
-            Alterar
-          </Button>
-        </div>
+          {/* Caixa alterar nome */}
+          <div className="bg-gray-300 rounded-full px-8 py-6 flex items-center justify-between mb-8">
+            <div>
+              <Label className="font-semibold text-gray-800">
+                Alterar nome de usuário
+              </Label>
+              <p className="text-sm text-gray-700 mt-1">Bruno</p>
+            </div>
 
-        {/* Alterar Senha */}
-        <div className="bg-gray-300 rounded-full px-6 py-6 flex items-center justify-between">
-          <div>
-            <Label className="font-semibold text-gray-800">
-              Alterar Senha
-            </Label>
-            <p className="text-sm text-gray-700 mt-1">************</p>
+            <Link href="/Telaconfig/Nome">
+              <Button className="bg-[#7c3aed] text-white px-6 py-2 rounded-full shadow">
+                Alterar
+              </Button>
+            </Link>
           </div>
 
-          <Button className="bg-[#7c3aed] text-white px-6 py-2 rounded-full shadow">
-            Alterar
-          </Button>
+          {/* Caixa alterar senha */}
+          <div className="bg-gray-300 rounded-full px-8 py-6 flex items-center justify-between">
+            <div>
+              <Label className="font-semibold text-gray-800">
+                Alterar Senha
+              </Label>
+              <p className="text-sm text-gray-700 mt-1">************</p>
+            </div>
+
+            <Link href="/Telaconfig/Senha">
+              <Button className="bg-[#7c3aed] text-white px-6 py-2 rounded-full shadow">
+                Alterar
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
