@@ -3,31 +3,38 @@ import { ResponsiveContainer, BarChart, Bar, XAxis, Tooltip, CartesianGrid } fro
 
 export default function GraficoMensal({ data }) {
   return (
-   
-    <div className="bg-white text-black p-4 rounded-xl shadow-lg h-full flex flex-col">
+  
+    <div className="bg-zinc-900 w-full h-full flex flex-col p-3">
       
-      <h3 className="font-bold text-sm mb-2 underline decoration-purple-500 decoration-2 underline-offset-4 flex-none">
+      <h3 className="font-bold text-xs mb-2 text-zinc-300 flex-none uppercase tracking-wider">
         Relatório Mensal
       </h3>
 
-   
+      
       <div className="flex-1 w-full min-h-0">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" />
+          <BarChart data={data} margin={{ top: 10, right: 0, left: -25, bottom: 0 }}>
+            
+            
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#333" />
+            
             <XAxis 
               dataKey="mes" 
-              stroke="#888" 
+              stroke="#555" 
               tickLine={false} 
               axisLine={false} 
-              tick={{fontSize: 12}} 
-            />
-            <Tooltip 
-              cursor={{fill: 'transparent'}}
-              contentStyle={{ backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #eee' }}
+              tick={{fontSize: 10, fill: '#777'}} 
+              dy={10} 
             />
             
-            <Bar dataKey="valor" fill="#c084fc" radius={[4, 4, 0, 0]} barSize={30} />
+            <Tooltip 
+              cursor={{fill: '#27272a'}}
+              contentStyle={{ backgroundColor: '#18181b', borderColor: '#3f3f46', color: '#fff', fontSize: '12px', borderRadius: '6px' }}
+            />
+            
+            
+            <Bar dataKey="valor" fill="#c084fc" radius={[4, 4, 0, 0]} barSize={40} />
+          
           </BarChart>
         </ResponsiveContainer>
       </div>

@@ -31,46 +31,48 @@ export default function Progresso() {
   ];
 
   return (
-    <div className="h-screen w-full bg-black text-white overflow-hidden flex flex-col">
-   
+  
+    <div className="h-[100dvh] w-full bg-black text-white flex flex-col overflow-hidden">
+      
       <div className="flex-none z-50">
         <Navbar />
       </div>
+
       
-      
-      <div className="flex-1 p-6 pt-4 flex flex-col min-h-0"> 
+      <div className="flex-1 flex flex-col p-4 pt-20 gap-3 min-h-0 w-full max-w-[1600px] mx-auto">
         
-        <h1 className="text-2xl font-bold mb-4 flex-none">Seu Progresso</h1>
+       
+        <div className="flex-none mt-2">
+          <h1 className="text-xl font-bold pl-1 leading-none">Seu Progresso</h1>
+        </div>
 
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4 flex-none">
-          <Card title="Horas Totais" value="5h" className="bg-purple-600 text-white py-3" />
-          <Card title="Pausas Totais" value="1h" className="bg-white text-black py-3" />
-          <Card title="Sua Colocação" value="10º" className="bg-white text-black py-3" />
+        <div className="flex-none grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <Card title="Horas Totais" value="5h" className="bg-purple-600 border-none text-white py-2" />
+          <Card title="Pausas" value="1h" className="py-2" />
+          <Card title="Ranking" value="10º" className="py-2" />
           
-          <div className="bg-white text-black p-3 rounded-xl shadow-md flex flex-col items-center justify-center relative">
-             <span className="absolute top-2 right-3 text-yellow-400 text-lg">★</span>
-             <p className="text-xs opacity-80">Nota</p>
-             <p className="text-3xl font-bold mt-1">6.5</p>
+          <div className="bg-zinc-900 border border-zinc-800 text-white p-2 rounded-xl shadow-lg flex flex-col items-center justify-center relative">
+             <span className="absolute top-2 right-2 text-yellow-500 text-xs">★</span>
+             <p className="text-[10px] uppercase tracking-wider font-semibold text-zinc-400">Nota</p>
+             <p className="text-2xl font-bold mt-0.5">6.5</p>
           </div>
         </div>
 
-        <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
+      
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-3 min-h-0 pb-2">
           
-         
-          <div className="lg:col-span-2 flex flex-col gap-4 h-full">
-        
-            <div className="flex-1 min-h-0">
+          <div className="lg:col-span-2 flex flex-col gap-3 h-full min-h-0">
+            <div className="flex-1 min-h-0 border border-zinc-800 rounded-xl overflow-hidden">
               <GraficoSemanal data={dadosSemanais} />
             </div>
-           
-            <div className="flex-1 min-h-0">
+            <div className="flex-1 min-h-0 border border-zinc-800 rounded-xl overflow-hidden">
               <GraficoMensal data={dadosMensais} />
             </div>
           </div>
 
-          
-          <div className="h-full min-h-0">
+        
+          <div className="h-full min-h-0 border border-zinc-800 rounded-xl overflow-hidden">
              <GraficoPizza data={dadosPizza} />
           </div>
         </div>
