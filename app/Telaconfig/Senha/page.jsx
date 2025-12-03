@@ -1,20 +1,22 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import React, { useState } from "react";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function ChangePasswordPage() {
-  const [currentPassword, setCurrentPassword] = useState('*************')
-  const [newPassword, setNewPassword] = useState('*************')
-  const [confirmPassword, setConfirmPassword] = useState('*************')
+  const [currentPassword, setCurrentPassword] = useState("*************");
+  const [newPassword, setNewPassword] = useState("*************");
+  const [confirmPassword, setConfirmPassword] = useState("*************");
 
   return (
-    <main className="min-h-screen bg-[#7c3aed] flex flex-col items-center p-6">
+    <main className="min-h-screen bg-[#7C3AED] flex flex-col items-center p-6">
       <header className="w-full max-w-4xl text-center mt-6">
         <h1 className="text-4xl font-extrabold text-white">Alterar Senha</h1>
-        <p className="mt-2 text-sm text-purple-100">Atualize sua informações de perfil.</p>
+        <p className="mt-2 text-sm text-white">
+          Atualize sua informações de perfil.
+        </p>
       </header>
 
       <div className="w-full max-w-4xl bg-white rounded-3xl mt-6 p-10 relative shadow-xl">
@@ -24,25 +26,23 @@ export default function ChangePasswordPage() {
           onClick={() => window.history.back()}
         >
           <svg
-              width="30"
-              height="30"
-              fill="none"
-              stroke="#7c3aed"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M18 22L10 14L18 6" />
-            </svg>
+            width="30"
+            height="30"
+            fill="none"
+            stroke="#7C3AED"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M18 22L10 14L18 6" />
+          </svg>
         </button>
 
         <div className="mt-8 space-y-8">
-
-          
-        
-          
           <div className="flex flex-col gap-0">
-            <Label className="font-bold ml-10 text-lg text-gray-900 mb-0">Alterar Senha</Label>
+            <Label className="font-bold ml-10 text-lg text-gray-900 mb-0">
+              Alterar Senha
+            </Label>
             <div className="flex items-center bg-transparent rounded-full px-8 py-2">
               <Input
                 type="password"
@@ -52,17 +52,18 @@ export default function ChangePasswordPage() {
                 placeholder="*************"
               />
               <Button
-                onClick={() => alert('Abrir modal para alterar senha')}
-                className="bg-[#7c3aed] hover:bg-violet-700 text-white font-semibold px-6 py-2 rounded-full ml-4"
+                onClick={() => alert("Abrir modal para alterar senha")}
+                className="bg-[#7C3AED] hover:bg-[#752df1] text-white font-semibold px-6 py-2 rounded-full ml-4"
               >
                 Alterar
               </Button>
             </div>
           </div>
 
-          
           <div className="flex flex-col gap-0">
-            <Label className="font-bold ml-10 text-lg text-gray-900 mb-0">Confirmar Senha</Label>
+            <Label className="font-bold ml-10 text-lg text-gray-900 mb-0">
+              Confirmar Senha
+            </Label>
             <div className="flex items-center bg-transparentrounded-full px-8 py-2">
               <Input
                 type="password"
@@ -74,12 +75,12 @@ export default function ChangePasswordPage() {
               <Button
                 onClick={() => {
                   if (newPassword !== confirmPassword) {
-                    alert('As senhas não conferem')
-                    return
+                    alert("As senhas não conferem");
+                    return;
                   }
-                  alert('Senha alterada com sucesso (simulação)')
+                  alert("Senha alterada com sucesso (simulação)");
                 }}
-                className="bg-[#7c3aed] hover:bg-violet-700 text-white font-semibold px-6 py-2 rounded-full ml-4"
+                className="bg-[#7C3AED] hover:bg-[#752df1]  text-white font-semibold px-6 py-2 rounded-full ml-4"
               >
                 Confirmar
               </Button>
@@ -88,5 +89,5 @@ export default function ChangePasswordPage() {
         </div>
       </div>
     </main>
-  )
+  );
 }

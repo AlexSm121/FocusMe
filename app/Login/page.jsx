@@ -74,7 +74,7 @@ export default function LoginPage() {
           <Link href="./" className="w-full block">
             <button
               type="button"
-              className="w-full bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-700 transition"
+              className="w-full bg-[#7C3AED] text-white p-2 rounded-lg hover:bg-[#752df1] transition"
             >
               Entrar
             </button>
@@ -87,7 +87,7 @@ export default function LoginPage() {
 
         <p className="text-center text-sm mt-4">
           Não possui conta?{" "}
-          <a href="/Cadastro" className="text-blue-600 hover:underline">
+          <a href="/Cadastro" className="text-blue-500 hover:underline">
             Cadastre-se aqui
           </a>
         </p>

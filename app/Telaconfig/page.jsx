@@ -9,13 +9,12 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
 export default function Telaconfig() {
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("nomeAtual");
-    setUserName(stored ?? "Bruno");
-  }, []);
+  const [userName, setUserName] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("nomeAtual") ?? "Bruno";
+    }
+    return "Bruno";
+  });
 
   return (
     <>
@@ -48,7 +47,7 @@ export default function Telaconfig() {
               height={120}
             />
             <Link href="/Telaconfig/Avatares">
-              <Button className="mt-6 bg-[#7c3aed] hover:bg-purple-800 px-8 py-2 rounded-full shadow text-white">
+              <Button className="mt-6 bg-[#7c3aed] hover:bg-[#752df1]  px-8 py-2 rounded-full shadow text-white">
                 Alterar
               </Button>
             </Link>
@@ -59,7 +58,9 @@ export default function Telaconfig() {
               <Label className="font-semibold text-gray-800 text-[18px]">
                 Alterar nome de usuário
               </Label>
-              <p className="text-sm text-gray-700 mt-1 text-[17px]">{userName || "Bruno"}</p>
+              <p className="text-sm text-gray-700 mt-1 text-[17px]">
+                {userName || "Bruno"}
+              </p>
             </div>
 
             <Link href="/Telaconfig/Nome">
@@ -74,15 +75,15 @@ export default function Telaconfig() {
               <Label className="font-semibold text-gray-800 text-[18px]">
                 Alterar Senha
               </Label>
-              <p className="text-sm text-gray-700 mt-1 text-[17px]">************</p>
+              <p className="text-sm text-gray-700 mt-1 text-[17px]">
+                ************
+              </p>
             </div>
             <Link href="/Telaconfig/Senha">
               <Button className="bg-[#7c3aed] text-white hover:bg-purple-800 px-6 py-2 rounded-full shadow">
                 Alterar
               </Button>
             </Link>
-
-            
           </div>
         </div>
       </div>
