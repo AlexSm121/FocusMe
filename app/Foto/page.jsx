@@ -8,7 +8,7 @@ export default function FotoPage() {
   const [username, setUsername] = useState("");
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[#7B2CF3]">
+    <div className="min-h-screen w-full flex items-center justify-center bg-[#7C3AED]">
       <div className="bg-white w-[430px] rounded-2xl shadow-xl p-6 flex flex-col items-center">
         <h1 className="text-xl font-bold mb-4">Sua melhor foto aqui:</h1>
 
@@ -22,7 +22,7 @@ export default function FotoPage() {
           className="
             w-[80%] mt-6 p-3 rounded-none 
             bg-gray-200 outline-none text-center
-            transition hover:text-white
+            transition hover:text-black
           "
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -32,7 +32,7 @@ export default function FotoPage() {
           <button
             className="
             w-[80%] mt-5 ml-10
-            bg-[#7B2CF3] 
+            bg-[#7C3AED]
             text-white 
             py-3 
             rounded-none 

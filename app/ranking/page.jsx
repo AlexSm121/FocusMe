@@ -22,11 +22,11 @@ function Ranking() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen w-full bg-[#0F0F0F] pt-20 flex items-center justify-center">
+      <div className="min-h-screen w-full bg-black pt-20 flex items-center justify-center">
         <div className="flex items-center justify-center">
-          <div className="bg-[#F6F6F6] rounded-2xl rounded-b-none relative flex flex-col items-center w-[53rem] h-[35rem] mt-8 ">
-            <div className="flex items-end gap-6 mt-10">
-              <div className="h-[11rem] w-[8rem] bg-[#8B5CF6] rounded-lg flex flex-col items-center justify-between p-3 hover:scale-110 transition">
+          <div className="bg-white rounded-2xl rounded-b-none relative flex flex-col items-center w-[59rem] h-[38rem] mt-12">
+            <div className="flex items-end gap-6 mt-12">
+              <div className="h-[12rem] w-[9rem] bg-[#7C3AED] rounded-lg flex flex-col items-center justify-between p-3 hover:scale-110 transition">
                 <Image
                   src={segundo.avatar}
                   width={40}
@@ -36,7 +36,7 @@ function Ranking() {
                 <p className="text-white text-[12px] font-semibold -mt-5">
                   {segundo.nome}
                 </p>
-                <p className="text-white bg-[#7C3AED] rounded px-2 text-[10px] flex items-center gap-1 -mt-4">
+                <p className="text-white bg-[#8B5CF6] rounded px-2 text-[10px] flex items-center gap-1 -mt-4">
                   {segundo.xP} XP
                   <Image
                     src="/images/estrela.png"
@@ -52,7 +52,7 @@ function Ranking() {
                   alt="Trofeu segundo lugar"
                 />
               </div>
-              <div className="h-[13rem] w-[8rem] bg-[#8B5CF6] rounded-lg flex flex-col items-center justify-between p-3 hover:scale-110 transition">
+              <div className="h-[14rem] w-[9rem] bg-[#7C3AED] rounded-lg flex flex-col items-center justify-between p-3 hover:scale-110 transition">
                 <Image
                   src={primeiro.avatar}
                   width={40}
@@ -62,7 +62,7 @@ function Ranking() {
                 <p className="text-white text-[12px] -mt-4 font-semibold">
                   {primeiro.nome}
                 </p>
-                <p className="text-white bg-[#7C3AED] rounded px-2 text-[10px] flex items-center gap-1 -mt-2 ">
+                <p className="text-white bg-[#8B5CF6] rounded px-2 text-[10px] flex items-center gap-1 -mt-2 ">
                   {primeiro.xP} XP
                   <Image
                     src="/images/estrela.png"
@@ -78,7 +78,7 @@ function Ranking() {
                   alt="Trofeu primeiro lugar"
                 />
               </div>
-              <div className="h-[10rem] w-[8rem] bg-[#8B5CF6] rounded-lg flex flex-col items-center justify-between p-3 hover:scale-110 transition">
+              <div className="h-[11rem] w-[9rem] bg-[#7C3AED] rounded-lg flex flex-col items-center justify-between p-3 hover:scale-110 transition">
                 <Image
                   src={terceiro.avatar}
                   width={33}
@@ -88,7 +88,7 @@ function Ranking() {
                 <p className="text-white font-semibold text-[12px] -mt-3">
                   {terceiro.nome}
                 </p>
-                <p className="text-white bg-[#7C3AED] rounded px-2 text-[10px] flex items-center gap-1 -mt-2">
+                <p className="text-white bg-[#8B5CF6] rounded px-2 text-[10px] flex items-center gap-1 -mt-2">
                   {terceiro.xP} XP
                   <Image
                     src="/images/estrela.png"
@@ -105,10 +105,10 @@ function Ranking() {
                 />
               </div>
             </div>
-            <div className="h-[2rem] p-1 absolute -top-5 bg-[#F6F6F6] w-[13rem] flex justify-center rounded-2xl shadow-md">
+            <div className="h-[2rem] p-1 absolute -top-5 bg-white w-[13rem] flex justify-center rounded-2xl shadow-md">
               <h1 className="text-center font-semibold">RANKING BOARD</h1>
             </div>
-            <table className="w-[45rem] h-[16rem] mt-8 bg-[#7C3AED] rounded-lg ">
+            <table className="w-[50rem] h-[17rem] mt-8 bg-[#7C3AED] rounded-lg ">
               <thead className="text-center">
                 <tr className="text-white text-xs">
                   <th className="px-4 py-2">RANK</th>
@@ -116,11 +116,11 @@ function Ranking() {
                   <th className="px-4 py-2">PONTOS</th>
                 </tr>
               </thead>
-              <tbody className=" bg-[#7C3AED]text-center font-semibold">
+              <tbody className=" bg-[#7C3AED] text-center font-semibold">
                 {tabela.map((item, index) => (
                   <tr
                     key={index}
-                    className="odd:bg-[#F6F6F6] even:bg-[#8B5CF6] odd:text-[#8B5CF6] even:text-[#F6F6F6]"
+                    className="odd:bg-white even:bg-[#7C3AED] odd:text-[#7C3AED] even:text-white"
                   >
                     <td className="text-center text-[0.75rem]"> {index + 1}</td>
                     <td className="flex items-center gap-2 w-16 mx-auto">

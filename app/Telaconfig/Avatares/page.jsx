@@ -16,11 +16,10 @@ export default function AlterarAvatar() {
       </div>
 
       <div className="relative bg-white w-[60rem] h-[37rem] mt-3 rounded-3xl p-10">
-
         {/* 🔙 Botão voltar */}
         <Link
           href="/Telaconfig"
-          className="absolute left-6 top-2 text-purple-600 text-4xl font-normal hover:text-purple-800"
+          className="absolute left-6 top-2 text-purple-600 text- text-4xl font-normal hover:bg-[#752df1] "
         >
           &lt;
         </Link>
@@ -28,49 +27,59 @@ export default function AlterarAvatar() {
         {/* LINHA 1 */}
         <div className="flex h-40 gap-20">
           <button className="w-40 h-40">
-            <Image src="/images/amanda.png" width={150} height={150} />
+            <Image src="/images/amanda.png" width={150} height={150} alt="" />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/andressa.png" width={150} height={150} />
+            <Image src="/images/andressa.png" width={150} height={150} alt="" />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/Ariana.png" width={150} height={150} />
+            <Image src="/images/Ariana.png" width={150} height={150} alt="" />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/bruno.png" width={150} height={150} />
+            <Image src="/images/bruno.png" width={150} height={150} alt="" />
           </button>
         </div>
 
         {/* LINHA 2 */}
         <div className="flex h-40 mt-8 gap-20">
           <button className="w-40 h-40">
-            <Image src="/images/marcela.png" width={150} height={150} />
+            <Image src="/images/marcela.png" width={150} height={150} alt="" />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/marquinhos.png" width={150} height={150} />
+            <Image
+              src="/images/marquinhos.png"
+              width={150}
+              height={150}
+              alt=""
+            />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/phellipe.png" width={150} height={150} />
+            <Image
+              src="/images/phellipe2.png"
+              width={150}
+              height={150}
+              alt=""
+            />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/vitinho.png" width={150} height={150} />
+            <Image src="/images/vitinho.png" width={150} height={150} alt="" />
           </button>
         </div>
 
         {/* LINHA 3 */}
         <div className="flex h-40 mt-8 gap-20">
           <button className="w-40 h-40 ">
-            <Image src="/images/carlos.png" width={150} height={150} />
+            <Image src="/images/carlos.png" width={150} height={150} alt=" " />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/lele.png" width={150} height={150} />
+            <Image src="/images/lele.png" width={150} height={150} alt="" />
           </button>
           <button className="w-40 h-40">
-            <Image src="/images/camera2.png" width={150} height={150} />
+            <Image src="/images/camera2.png" width={150} height={150} alt="" />
           </button>
 
           {/* Botão confirmar */}
-          <Button className="ml-4 bg-[#7c3aed] hover:bg-purple-800 px-16 py-5 mt-24 rounded-full text-white font-semibold shadow-none">
+          <Button className="ml-4 bg-[#7C3AED] hover:bg-[#752df1]  px-16 py-5 mt-24 rounded-full text-white font-semibold shadow-none">
             Confirmar
           </Button>
         </div>

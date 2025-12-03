@@ -29,10 +29,10 @@ export default function CadastrarPage() {
     <div
       className="
         min-h-screen flex items-center justify-between 
-        bg-no-repeat bg-cover
+        bg-no-repeat 
       "
       style={{
-        backgroundImage: "linear-gradient(to right, #8B3DFF 50%, #000000 50%)",
+        backgroundImage: "linear-gradient(to right, #7C3AED 50%, #000000 50%)",
       }}
     >
       <div className="w-1/2 flex items-center justify-center">
@@ -88,7 +88,7 @@ export default function CadastrarPage() {
           <Link href="/Foto" className="w-full block">
             <button
               type="button"
-              className="w-full bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-700 transition"
+              className="w-full bg-[#7C3AED] text-white p-2 rounded-lg hover:bg-[#752df1]  transition"
             >
               Entrar
             </button>
@@ -101,7 +101,7 @@ export default function CadastrarPage() {
 
         <p className="text-center text-sm mt-4">
           Já possui conta?{" "}
-          <a href="/Login" className="text-blue-600 hover:underline">
+          <a href="/Login" className="text-blue-500 hover:underline">
             Faça seu login
           </a>
         </p>
