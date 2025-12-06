@@ -1,23 +1,21 @@
 "use client"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import confetti from "canvas-confetti"
 import { Checkbox } from "@/components/ui/checkbox"
 import NewTaskModal from "./newTaskModal"
 import BotaoCriarTask from "./botaoCriarTask"
 import ConfirmarCompleteModal from "./confirmarCompleteModal"
 
-export default function CardTaskPrincipal() {
-  const [tasks, setTasks] = useState([
-    { id: 1, title: "Teste 1 de anotação", done: false },
-    { id: 2, title: "Teste 2 de anotação", done: false },
-    { id: 3, title: "Teste 3 de anotação", done: false },
-    { id: 4, title: "Teste 4 de anotação", done: false },
-    { id: 5, title: "Teste 5 de anotação", done: false },
-    { id: 6, title: "Teste 6 de anotação", done: false },
-  ])
-
+export default function CardTaskPrincipal({tasks: initialTasks, title}) {
+  const [tasks, setTasks] = useState(initialTasks)
   const [showAddModal, setShowAddModal] = useState(false)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
+
+
+  //quando o swap alterar as tasks
+  useEffect(()=> {
+    setTasks(initialTasks)
+  },[initialTasks])
 
   function handleAdd({ title }) {
     const nextId = tasks.length ? Math.max(...tasks.map(t => t.id)) + 1 : 1
@@ -84,7 +82,11 @@ export default function CardTaskPrincipal() {
   return (
     <section className="relative bg-white rounded-2xl shadow-lg p-6 w-full max-w-xl border-l-4 border-purple-400">
       <BotaoCriarTask onClick={() => setShowAddModal(true)} />
-      {showAddModal && <NewTaskModal initialText="" onClose={() => setShowAddModal(false)} onSave={handleAdd} />}
+      {showAddModal && (
+      <NewTaskModal 
+      initialText="" 
+      onClose={() => setShowAddModal(false)} 
+      onSave={handleAdd} />)}
 
       {showConfirmModal && (
         <ConfirmarCompleteModal
@@ -99,7 +101,10 @@ export default function CardTaskPrincipal() {
 
       <header className="mb-4">
         <h2 className="text-2xl font-bold text-gray-800 mb-3">
-          Tasks diárias <span className="font-normal text-gray-600">({tasks.length} tasks)</span>
+          {title} {" "} 
+          <span className="font-normal text-gray-600">
+            ({tasks.length} tasks)
+            </span>
         </h2>
       </header>
 
@@ -108,7 +113,7 @@ export default function CardTaskPrincipal() {
           <li key={task.id} className="flex items-center">
             <span className="w-1.5 h-7 bg-[#7C3AED] rounded mr-4" />
             <Checkbox checked={task.done} onCheckedChange={c => toggleDone(task.id, c)} className="mr-3" />
-            <span className={`ml-3 text-1xl font-medium ${task.done ? "line-through text-gray-400" : ""}`}>
+            <span className={`ml-3 text-lg font-medium ${task.done ? "line-through text-gray-400" : ""}`}>
               {task.title}
             </span>
           </li>
