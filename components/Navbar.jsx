@@ -3,12 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const links = [
-    { label: "Timer", href: "./" },
+    { label: "Timer", href: "/" },
     { label: "Progresso", href: "/progresso" },
     { label: "Ranking", href: "/ranking" },
     { label: "Tasks", href: "/task" },
@@ -29,15 +31,33 @@ export default function Navbar() {
               priority
             />
           </div>
-          <ul className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-            {links.map((l) => (
-              <li key={l.label} className="hover:text-indigo-600 transition">
-                <a href={l.href}>{l.label}</a>
-              </li>
-            ))}
+          <ul className="hidden md:flex items-center gap-8 font-medium">
+            {links.map((l) => {
+              const active = pathname === l.href;
+
+              return (
+                <li key={l.label} className="flex flex-col items-center">
+                  <Link
+                    href={l.href}
+                    className={`pb-1 transition ${
+                      active
+                        ? "text-[#7C3AED]"
+                        : "text-gray-700 hover:text-[#752df1]"
+                    }`}
+                  >
+                    {l.label}
+                  </Link>
+
+                  {active && (
+                    <span className="w-full h-[3px] rounded-full bg-[#7C3AED]"></span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
+
           <Link href="/Login">
-            <button className="hidden md:flex px-5 py-2 bg-indigo-600 hover:bg-indigo-700 transition text-white rounded-xl shadow-md active:scale-95">
+            <button className="hidden md:flex px-5 py-2 bg-[#7C3AED] hover:bg-[#752df1] transition text-white rounded-xl shadow-md active:scale-95">
               Login
             </button>
           </Link>
@@ -56,7 +76,11 @@ export default function Navbar() {
                 stroke="currentColor"
                 strokeWidth={1.8}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
               <svg
@@ -67,14 +91,19 @@ export default function Navbar() {
                 strokeWidth={1.8}
                 stroke="currentColor"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
         </div>
         <div
-          className={`md:hidden w-full bg-white/95 border-t border-white/30 overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
+          className={`md:hidden w-full bg-white/95 border-t border-white/30 overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${
+            open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
         >
           <div className="px-6 py-4">
             <ul className="flex flex-col gap-3 text-gray-700 font-medium">
@@ -83,7 +112,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block py-2 px-3 rounded-md hover:bg-indigo-50 hover:text-indigo-600 transition"
+                    className="block py-2 px-3 rounded-md hover:bg-[#752df1]  hover:text-[#752df1] transition"
                   >
                     {l.label}
                   </a>
@@ -93,7 +122,7 @@ export default function Navbar() {
                 <a
                   href="/Login"
                   onClick={() => setOpen(false)}
-                  className="inline-block mt-2 px-4 py-2 bg-indigo-600 text-white rounded-xl shadow-md hover:bg-indigo-700 transition"
+                  className="inline-block mt-2 px-4 py-2 bg-[#7C3EAD] text-white rounded-xl shadow-md hover:bg-[#752df1] transition"
                 >
                   Login
                 </a>
