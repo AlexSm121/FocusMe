@@ -23,7 +23,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 ml-2">
             <Image
-              src="/images/Logo_FocusMe.png"
+              src="/images/logo.png"
               alt="FocusMe Logo"
               width={150}
               height={90}
