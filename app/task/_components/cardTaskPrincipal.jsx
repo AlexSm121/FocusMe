@@ -8,14 +8,12 @@ import BotaoCriarTask from "./botaoCriarTask"
 import ConfirmarCompleteModal from "./confirmarCompleteModal"
 import { useAuth } from "@/hooks/useAuth"
 
-export default function CardTaskPrincipal({ tasks, title, onAdd, onToggle }) {
+
+export default function CardTaskPrincipal({ tasks, title, onAdd, onToggle, alreadyCompleted = false, onClaim }) {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
 
-  // impede XP duplicado
-  const [alreadyCompleted, setAlreadyCompleted] = useState(false)
-
-  const { adicionarXp } = useAuth()
+  const { usuario, adicionarXp } = useAuth()
 
   // verifica se todas as tasks estão concluídas
   const allDone = tasks.length > 0 && tasks.every(t => t.done)
@@ -64,21 +62,16 @@ export default function CardTaskPrincipal({ tasks, title, onAdd, onToggle }) {
     // se não terminou tudo ou já completou antes → bloqueia
     if (!allDone || alreadyCompleted) return
 
-    adicionarXp(10)
+     adicionarXp(usuario.id, 10)
     triggerConfetti(1500)
     setShowConfirmModal(true)
 
-    // impede ganhar XP novamente
-    setAlreadyCompleted(true)
+    if (typeof onClaim === "function") onClaim()
   }
 
   // quando adicionar uma nova task → RESETAR recompensa
   function handleAddTask(title) {
     onAdd(title) // chama o pai para criar a task
-
-    // 👉 desbloquear novamente o botão completar
-    setAlreadyCompleted(false)
-
     setShowAddModal(false)
   }
 

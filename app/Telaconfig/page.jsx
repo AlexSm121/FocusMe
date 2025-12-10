@@ -7,37 +7,36 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Telaconfig() {
+
+  const [avatarUrl, setAvatarUrl] = useState("");
   const [userName, setUserName] = useState("");
+
   const [isNameModalOpen, setIsNameModalOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
-
-  const [avatarUrl, setAvatarUrl] = useState("/images/lele.png");
 
   const [newName, setNewName] = useState("");
   const [confirmName, setConfirmName] = useState("");
   const [nameError, setNameError] = useState("");
-  const nameFirstRef = useRef(null);
 
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passError, setPassError] = useState("");
+
+  const { usuario: currentUser, usuarios: allUsu, login: entrar, logout: deslogar } = useAuth();
+
+  const nameFirstRef = useRef(null);
   const passFirstRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (currentUser) {
+      setUserName(currentUser.nome);
+      setAvatarUrl(currentUser.avatar);
+    }
+  }, [currentUser]);
 
-    const stored = localStorage.getItem("nomeAtual");
-    setUserName(stored ?? "Bruno");
-
-    const storedAvatar = localStorage.getItem("fotoAtual");
-    setAvatarUrl(storedAvatar || "/images/lele.png");
-  }, []);
-
-  // ---------------------------
-  // SALVAR NOVO NOME
-  // ---------------------------
   function salvarNome() {
     if (newName.trim() === "" || confirmName.trim() === "") {
       setNameError("Preencha os dois campos.");
@@ -49,7 +48,14 @@ export default function Telaconfig() {
       return;
     }
 
-    localStorage.setItem("nomeAtual", newName);
+    setUsuarios((prev) =>
+      prev.map((u) =>
+        u.id === currentUser.id ? { ...u, nome: newName } : u
+      )
+    );
+
+    setUsuario((prev) => ({ ...prev, nome: newName }));
+
     setUserName(newName);
 
     setNewName("");
@@ -58,9 +64,6 @@ export default function Telaconfig() {
     setIsNameModalOpen(false);
   }
 
-  // ---------------------------
-  // SALVAR NOVA SENHA
-  // ---------------------------
   function salvarSenha() {
     if (newPassword.trim() === "" || confirmPassword.trim() === "") {
       setPassError("Preencha os dois campos.");
@@ -71,13 +74,25 @@ export default function Telaconfig() {
       setPassError("As senhas não coincidem.");
       return;
     }
-
-    localStorage.setItem("senhaAtual", newPassword);
+    setUsuarios((prev) =>
+      prev.map((u) =>
+        u.id === currentUser.id ? { ...u, senha: newPassword } : u
+      )
+    );
+    setUsuario((prev) => ({ ...prev, senha: newPassword }));
 
     setNewPassword("");
     setConfirmPassword("");
     setPassError("");
     setIsPasswordModalOpen(false);
+  }
+
+  if (!currentUser) {
+    return (
+      <div className="w-full h-screen flex items-center justify-center text-white text-2xl">
+        Você não está logado.
+      </div>
+    );
   }
 
   return (
@@ -86,6 +101,7 @@ export default function Telaconfig() {
 
       <div className="bg-[#7c3aed] min-h-screen pt-20 px-6 flex justify-center items-start">
         <div className="bg-white w-[95%] max-w-4xl mt-3 rounded-3xl shadow-xl p-8 sm:p-28 relative mx-auto">
+          
           {/* BOTÃO VOLTAR */}
           <Link href="./" className="w-full block">
             <button className="absolute left-8 top-8">
@@ -112,6 +128,7 @@ export default function Telaconfig() {
               width={120}
               height={120}
             />
+
             <Link href="/Telaconfig/Avatares">
               <Button className="mt-6 bg-[#7c3aed] hover:bg-purple-800 px-8 py-2 rounded-full shadow text-white">
                 Alterar
@@ -121,10 +138,14 @@ export default function Telaconfig() {
 
           {/* ALTERAR NOME */}
           <div className="flex justify-between bg-gray-200 px-6 py-4 rounded-full mb-4">
-            <p>Alterar nome de usuário<br /><span className="font-semibold">{userName}</span></p>
+            <p>
+              Alterar nome de usuário <br />
+              <span className="font-semibold">{userName}</span>
+            </p>
+
             <Button
               onClick={() => setIsNameModalOpen(true)}
-              className="bg-[#7c3aed]  hover:bg-purple-800  rounded-full"
+              className="bg-[#7c3aed] hover:bg-purple-800 rounded-full"
             >
               Alterar
             </Button>
@@ -132,22 +153,25 @@ export default function Telaconfig() {
 
           {/* ALTERAR SENHA */}
           <div className="flex justify-between bg-gray-200 px-6 py-4 rounded-full">
-            <p>Alterar Senha<br /> ************</p>
+            <p>
+              Alterar Senha <br /> ************
+            </p>
+
             <Button
               onClick={() => setIsPasswordModalOpen(true)}
-              className="bg-[#7c3aed]  hover:bg-purple-800 rounded-full"
+              className="bg-[#7c3aed] hover:bg-purple-800 rounded-full"
             >
               Alterar
             </Button>
           </div>
 
-          {/* ---------------------------- */}
-          {/* MODAL ALTERAR NOME */}
-          {/* ---------------------------- */}
+          {/* MODAL NOME */}
           {isNameModalOpen && (
             <div className="fixed inset-0 bg-black/30 flex items-center justify-center">
               <div className="bg-white p-8 rounded-2xl w-[90%] max-w-lg shadow-xl">
-                <h2 className="text-xl font-semibold mb-6">Alterar nome de usuário</h2>
+                <h2 className="text-xl font-semibold mb-6">
+                  Alterar nome de usuário
+                </h2>
 
                 <Label>Novo nome</Label>
                 <Input
@@ -172,7 +196,7 @@ export default function Telaconfig() {
                   <Button variant="ghost" onClick={() => setIsNameModalOpen(false)}>
                     Cancelar
                   </Button>
-                  <Button className="bg-[#7c3aed]  hover:bg-purple-800 " onClick={salvarNome}>
+                  <Button className="bg-[#7c3aed] hover:bg-purple-800" onClick={salvarNome}>
                     Salvar
                   </Button>
                 </div>
@@ -180,9 +204,7 @@ export default function Telaconfig() {
             </div>
           )}
 
-          {/* ---------------------------- */}
-          {/* MODAL ALTERAR SENHA */}
-          {/* ---------------------------- */}
+          {/* MODAL SENHA */}
           {isPasswordModalOpen && (
             <div className="fixed inset-0 bg-black/30 flex items-center justify-center">
               <div className="bg-white p-8 rounded-2xl w-[90%] max-w-lg shadow-xl">
@@ -213,7 +235,7 @@ export default function Telaconfig() {
                   <Button variant="ghost" onClick={() => setIsPasswordModalOpen(false)}>
                     Cancelar
                   </Button>
-                  <Button className="bg-[#7c3aed]  hover:bg-purple-800 " onClick={salvarSenha}>
+                  <Button className="bg-[#7c3aed] hover:bg-purple-800" onClick={salvarSenha}>
                     Salvar
                   </Button>
                 </div>
